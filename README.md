@@ -1,6 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
 ## Microservicios de Productos
 
@@ -8,14 +5,16 @@ Repositorio parte de curso https://www.udemy.com/course/nestjs-microservicios
 del maestro Fernando Herrera.
 EXCELENTE!
 
-## Installation
+## Dev Steps 
 
+1. Clonar repo
+2. Instalar depencias:
 ```bash
 $ npm install
 ```
-
-## Running the app
-
+3. Crear archivo `.env` basado en `env.template`
+4. Ejecutar migración de prisma con `npx prisma migrate dev`
+5. Ejecutar la app 
 ```bash
 # development
 $ npm run start
@@ -27,24 +26,11 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Helpful docs
+## Documentos de ayuda
 
 - https://docs.nestjs.com/recipes/prisma
 
 
-## License
+## Nest License
 
 Nest is [MIT licensed](LICENSE).

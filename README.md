@@ -25,6 +25,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+6. (Opcional) Ejecutar el comando en `semilla\products.sql` para alimentar la bd.
 
 ## Documentos de ayuda
 

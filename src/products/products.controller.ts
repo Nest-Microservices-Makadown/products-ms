@@ -1,35 +1,41 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe } from '@nestjs/common';
+import { Controller, ParseIntPipe } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PaginationDto } from 'src/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Post()
-  create(@Body() createProductDto: CreateProductDto) {
+  // @Post()
+  @MessagePattern({ cmd: 'create-product' })
+  create(@Payload() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
-  @Get()
-  async findAll(@Query() paginationDto: PaginationDto) {
+  // @Get()
+  @MessagePattern({ cmd: 'find-all-products' })
+  async findAll(@Payload() paginationDto: PaginationDto) {
     return await this.productsService.findAll(paginationDto);
   }
 
-  @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: number) {
+  // @Get(':id')
+  @MessagePattern({ cmd: 'find-one-product' })
+  async findOne(@Payload('id', ParseIntPipe) id: number) {
     return await this.productsService.findOne(id);
   }
 
-  @Patch(':id')
-  async update(@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto) {
-     return await this.productsService.update(+id, updateProductDto);
+  // @Patch(':id')
+  @MessagePattern({ cmd: 'update-product' })
+  async update(@Payload() updateProductDto: UpdateProductDto) {
+     return await this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return await this.productsService.remove(+id);
+  // @Delete(':id')
+  @MessagePattern({ cmd: 'remove-product' })
+  async remove(@Payload('id', ParseIntPipe) id: number) {
+    return await this.productsService.remove(id);
   }
 }

@@ -12,7 +12,6 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       port: envs.PORT,
-      url: envs.DATABASE_URL,
     }
   })
 
@@ -23,6 +22,7 @@ async function bootstrap() {
     })
     );
   
-  logger.log(`Products microservice is running on port: ${envs.PORT}`);
+  await app.listen();
+  logger.log(`Products microservice is listening on port: ${envs.PORT}`);
 }
 bootstrap();

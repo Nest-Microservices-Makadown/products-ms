@@ -18,7 +18,6 @@ export class ProductsController {
   // @Get()
   @MessagePattern({ cmd: 'find-all-products' })
   async findAll(@Payload() paginationDto?: PaginationDto) {
-    console.log('Request received in find-all-products');
     return await this.productsService.findAll(paginationDto);
   }
 

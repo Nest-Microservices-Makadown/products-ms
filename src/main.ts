@@ -21,7 +21,7 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
     })
     );
-  
+
   await app.listen();
   logger.log(`Products microservice is listening on port: ${envs.PORT}`);
 }

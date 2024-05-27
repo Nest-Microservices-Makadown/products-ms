@@ -30,6 +30,7 @@ $ npm run start:prod
 ## Documentos de ayuda
 
 - https://docs.nestjs.com/recipes/prisma
+- https://nats.io/
 
 
 ## Nest License

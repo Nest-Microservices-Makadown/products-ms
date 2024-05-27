@@ -38,4 +38,9 @@ export class ProductsController {
   async remove(@Payload('id', ParseIntPipe) id: number) {
     return await this.productsService.remove(id);
   }
+
+  @MessagePattern({ cmd: 'validate-products' })
+  async validateProducts(@Payload() ids: number[]) {
+    return await this.productsService.validateProducts(ids);
+  }
 }

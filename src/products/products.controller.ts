@@ -10,36 +10,36 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   // @Post()
-  @MessagePattern({ cmd: 'create-product' })
+  @MessagePattern('create-product')
   create(@Payload() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
   // @Get()
-  @MessagePattern({ cmd: 'find-all-products' })
+  @MessagePattern('find-all-products')
   async findAll(@Payload() paginationDto?: PaginationDto) {
     return await this.productsService.findAll(paginationDto);
   }
 
   // @Get(':id')
-  @MessagePattern({ cmd: 'find-one-product' })
+  @MessagePattern('find-one-product')
   async findOne(@Payload('id', ParseIntPipe) id: number) {
     return await this.productsService.findOne(id);
   }
 
   // @Patch(':id')
-  @MessagePattern({ cmd: 'update-product' })
+  @MessagePattern('update-product')
   async update(@Payload() updateProductDto: UpdateProductDto) {
      return await this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
   // @Delete(':id')
-  @MessagePattern({ cmd: 'remove-product' })
+  @MessagePattern('remove-product')
   async remove(@Payload('id', ParseIntPipe) id: number) {
     return await this.productsService.remove(id);
   }
 
-  @MessagePattern({ cmd: 'validate-products' })
+  @MessagePattern('validate-products')
   async validateProducts(@Payload() ids: number[]) {
     return await this.productsService.validateProducts(ids);
   }

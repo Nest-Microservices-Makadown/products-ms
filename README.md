@@ -13,8 +13,12 @@ EXCELENTE!
 $ npm install
 ```
 3. Crear archivo `.env` basado en `env.template`
-4. Ejecutar migración de prisma con `npx prisma migrate dev`
-5. Ejecutar la app 
+4. Levantar Servidor de NATS
+```
+docker run -d --name nats-server -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
+```
+5. Ejecutar migración de prisma con `npx prisma migrate dev`
+6. Ejecutar la app 
 ```bash
 # development
 $ npm run start
@@ -25,12 +29,13 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-6. (Opcional) Ejecutar el comando en `semilla\products.sql` para alimentar la bd.
+7. (Opcional) Ejecutar el comando en `semilla\products.sql` para alimentar la bd.
 
 ## Documentos de ayuda
 
 - https://docs.nestjs.com/recipes/prisma
 - https://nats.io/
+- https://docs.nestjs.com/microservices/nats
 
 
 ## Nest License
